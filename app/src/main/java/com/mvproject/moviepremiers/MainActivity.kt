@@ -50,5 +50,6 @@ class MainActivity : AppCompatActivity() {
         updater.title = "MoviePremiers Update" // Notice
         updater.message = "You can update to version! 1.2.0" // Yout can update new version!
         updater.executeVersionCheck()
+
     }
 }
