@@ -8,6 +8,7 @@ buildscript {
         }
         google()
         jcenter()
+        maven { url "https://dl.bintray.com/raizlabs/Libraries" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'
