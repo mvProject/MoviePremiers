@@ -1,6 +1,11 @@
 {
-"last_force_required_version":"1.0.0",
-"required_version":"1.2.0",
-"type":"optional",
-"update_url":"https://github.com/mvProject/MoviePremiers/tree/master/app/release/app-release.apk"
+	"android": {
+		"minimum_version": "1.0.0",
+		"minimum_version_min_sdk": 23,
+		"latest_version": {
+			"version": "1.2.0",
+			"notification_type": "ALWAYS",
+			"min_sdk":23
+		}
+	}
 }
