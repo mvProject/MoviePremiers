@@ -1,6 +1,6 @@
 {
   "newVersion": "1.2.0",
-  "apkUrl": "https://github.com/mvProject/MoviePremiers/blob/master/app/release/app-release.apk",
+  "apkUrl": "https://github.com/mvProject/MoviePremiers/blob/master/app/release/app-release.apk?raw=true",
   "versionNotes": [
     "- Bug fixes"
   ]
