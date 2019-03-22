@@ -1,28 +1,67 @@
 package com.mvproject.moviepremiers
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.text.DecimalFormat
-import java.util.*
+import kotlinx.coroutines.*
 
 
 class MoviesViewModel : ViewModel() {
 
-    private var movies = mutableListOf<Movie>()
+  //  private var movies = mutableListOf<Movie>()
     private val api = ApiService().initApi()
 
+    private val job = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + job)
 
-    private val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-    private val month = DecimalFormat("00").format(Calendar.getInstance().get(Calendar.MONTH)+1)
-    private val year = Calendar.getInstance().get(Calendar.YEAR).toString()
+    var isLoading = MutableLiveData<Boolean>()
+    var isError = MutableLiveData<Throwable>()
+    var movies = MutableLiveData<MutableList<Movie>>()
 
-    suspend fun getMovieData(){
-        movies = api.getMovies(month,year).await()
+    private val day = getCurrentDay()
+    private val month = getCurrentMonth()
+    private val year = getCurrentYear()
+
+ //   suspend fun getMovieData(){
+ //       try{
+ //           movies = api.getMovies(month,year).await()
+ //       }
+ //       catch(e : Exception){
+ //           Log.d("Date","Exception - " + e.message)
+ //       }
+//        Log.d("Date","Size - " + movies.size.toString())
+//    }
+//    fun getData() : MutableList<Movie>{
+     //   isLoading.value = false
+//        return movies.filter{ it.date.parseDate().toInt() >= day} as MutableList<Movie>
+//    }
+
+    fun getMovieData() {
+        uiScope.launch(handler) {
+            //Working on UI thread
+            isLoading.value = true
+            Log.d("Date","doSomeOperation - " + Thread.currentThread().name)
+            //Use dispatcher to switch between context
+            val deferred = async(Dispatchers.IO) {
+                //Working on background thread
+                api.getMovies(month,year).await()
+                //10 + 10
+            }
+            //Working on UI thread
+            movies.value = deferred.await().filter{ it.date.parseDate().toInt() >= day} as MutableList<Movie>
+            isLoading.value = false
+
+            //Log.d("Date","doSomeOperation - " + movies2.value)
+        }
     }
-    fun getData() : MutableList<Movie>{
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
 
-        Log.d("Date",day.toString())
-        return movies.filter{ it.date.parseDate().toInt() > day} as MutableList<Movie>
-        //return movies
+    private val handler = CoroutineExceptionHandler { coroutineContext, throwable ->
+        isLoading.value = false
+        isError.value = throwable
+        //Log.d("Date", "Throwable : $throwable")
     }
 }

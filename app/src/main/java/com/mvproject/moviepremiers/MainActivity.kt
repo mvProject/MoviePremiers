@@ -1,21 +1,21 @@
 package com.mvproject.moviepremiers
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.loadingview.LoadingDialog
-import jp.misyobun.lib.versionupdater.MSBVersionUpdater
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MoviesViewModel
-    private var myJob: Job? = null
+ //   private var myJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,31 +25,45 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
 
-        getData()
+        //viewModel.getData2()
+        viewModel.isLoading.observe(this, Observer<Boolean> {
+            it?.let { showLoadingDialog(it) }
+        })
+
+        viewModel.isError.observe(this, Observer<Throwable> {
+            it?.let { Snackbar.make(movieList, it.message.toString(), Snackbar.LENGTH_LONG).show() }
+        })
+
+        viewModel.movies.observe(this, Observer<MutableList<Movie>> {
+            it?.let {movieList.apply{
+                layoutManager = LinearLayoutManager(this@MainActivity)
+                adapter = MovieAdapter(it, this@MainActivity)
+            } }
+        })
+        viewModel.getMovieData()
+        //getData()
     }
 
-    private fun getData(){
-        loadingView.start()
-        myJob = CoroutineScope(Dispatchers.IO).launch {
-            viewModel.getMovieData()
-            withContext(Dispatchers.Main) {
-                loadingView.stop()
-                movieList.apply{
-                    layoutManager = LinearLayoutManager(this@MainActivity)
-                    adapter = MovieAdapter(viewModel.getData(), this@MainActivity)
-                }
-            }
-        }
-    }
+//    private fun getData(){
+//        myJob = CoroutineScope(Dispatchers.IO).launch {
+//            viewModel.getMovieData()
+//            withContext(Dispatchers.Main) {
+//                loadingView.stop()
+//                movieList.apply{
+//                    layoutManager = LinearLayoutManager(this@MainActivity)
+//                    adapter = MovieAdapter(viewModel.getData(), this@MainActivity)
+//                }
+//            }
+//        }
+//    }
 
     override fun onResume() {
         super.onResume()
         Log.d("Date","onResume")
-        val updater = MSBVersionUpdater(this)
-        updater.endpoint = "https://github.com/mvProject/MoviePremiers/blob/master/app/release/update.json"
-        updater.title = "MoviePremiers Update" // Notice
-        updater.message = "You can update to version! 1.2.0" // Yout can update new version!
-        updater.executeVersionCheck()
-
     }
+
+    private fun showLoadingDialog(show: Boolean) {
+        if (show) loadingView.start() else loadingView.stop()
+    }
+
 }

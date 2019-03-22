@@ -15,4 +15,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:text">@string/test_string</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
 </resources>

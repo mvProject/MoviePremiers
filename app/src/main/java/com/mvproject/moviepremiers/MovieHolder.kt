@@ -3,15 +3,14 @@ package com.mvproject.moviepremiers
 import android.content.Context
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.movie_item.view.*
 import androidx.core.content.ContextCompat.startActivity
 import android.content.Intent
+import android.net.Uri
 import java.util.*
 import android.provider.CalendarContract
-import java.text.DecimalFormat
 
 class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
     private val movieName = view?.findViewById(R.id.movie_name_rus) as TextView
@@ -39,8 +38,12 @@ class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
             val month = Calendar.getInstance().get(Calendar.MONTH)
             val year = Calendar.getInstance().get(Calendar.YEAR)
             startCalendar(context,"Премьера ${movie.titleRus}",year,month,movie.date.parseDate().toInt())
-            //Toast.makeText(context,"Movie Date click  " + movie.date.parseDate(),Toast.LENGTH_SHORT).show()
         }
+
+        //movieName.setOnClickListener {
+        //    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(movie.link))
+        //    startActivity(context,intent,null)
+        //}
     }
 }
 fun String.parseDate() : String {
