@@ -1,9 +1,5 @@
 {
-  "latestVersion": "1.2.0",
-  "url": "https://github.com/mvProject/MoviePremiers/releases",
-  "releaseNotes": [
-    "- First",
-    "- Second",
-    "- Bug fixes"
-  ]
+  "latestVersion": "1.2",
+  "file":"app-release.apk"
+  "url": "https://github.com/mvProject/MoviePremiers/blob/master/app/release/app-release.apk?raw=true",
 }
