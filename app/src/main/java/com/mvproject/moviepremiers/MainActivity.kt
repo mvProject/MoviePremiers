@@ -1,7 +1,5 @@
 package com.mvproject.moviepremiers
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,19 +7,25 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.mvproject.updater.Updater
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MoviesViewModel
- //   private var myJob: Job? = null
+
+    private val json = "https://raw.githubusercontent.com/mvProject/MoviePremiers/master/app/release/update.json"
+
+    //   private var myJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar)
+        val upd = Updater(this)
+        upd.setUpdateJsonUrl(json)
+        upd.start()
 
         viewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
 

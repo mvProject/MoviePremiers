@@ -11,7 +11,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
-        versionName "1.2.0"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -63,4 +63,10 @@ dependencies {
         // Excludes the support library because it's already included by Glide.
         transitive = false
     }
+
+    implementation 'com.github.mvProject:mvUpdater:1.6.1'
+    implementation 'com.mani:ThinDownloadManager:1.4.0'
+    implementation "org.jetbrains.anko:anko-commons:0.10.4"
+    implementation "org.jetbrains.anko:anko-design:0.10.4"
+    implementation 'ru.superjob:kotlin-permissions:1.0.3'
 }
