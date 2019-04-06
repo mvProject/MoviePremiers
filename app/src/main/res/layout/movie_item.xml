@@ -1,132 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:autofit="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#FFFFFF"
-    app:cardCornerRadius="3dp"
-    app:strokeColor="@color/colorPrimary"
-    app:strokeWidth="1dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/movieLogo"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:adjustViewBounds="false"
-            android:cropToPadding="false"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movie_date"
-            app:riv_border_color="#333333"
-            app:riv_border_width="2dip"
-            app:riv_corner_radius="5dip"
-            app:riv_mutate_background="true"
-            app:riv_oval="false"
-            app:riv_tile_mode="clamp" />
-
-        <TextView
-            android:id="@+id/movie_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/test_string"
-            android:textAlignment="textStart"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <me.grantland.widget.AutofitTextView
-            android:id="@+id/movie_name_rus"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="112dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif-black"
-            android:maxLines="2"
-            android:singleLine="false"
-            android:text="@string/test_string"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/movieLogo"
-            app:layout_constraintTop_toTopOf="parent"
-            autofit:minTextSize="12sp" />
-
-        <TextView
-            android:id="@+id/movie_name_eng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:maxLines="2"
-            android:singleLine="false"
-            android:text="@string/test_string"
-            android:textSize="12sp"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.004"
-            app:layout_constraintStart_toEndOf="@+id/movieLogo"
-            app:layout_constraintTop_toBottomOf="@+id/movie_name_rus" />
-
-        <TextView
-            android:id="@+id/movie_genre"
+        android:background="@android:color/transparent">
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            style="@style/MyTextViewStyle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/movieLogo"
-            app:layout_constraintTop_toBottomOf="@+id/movie_name_eng" />
+            android:padding="2dp">
 
-        <TextView
-            android:id="@+id/movie_country"
+        <com.google.android.material.card.MaterialCardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:autofit="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            style="@style/MyTextViewStyle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/movieLogo"
-            app:layout_constraintTop_toBottomOf="@+id/movie_genre" />
+            app:cardCornerRadius="6dp"
+            app:strokeColor="@color/primaryLightColor"
+            app:strokeWidth="1dp">
 
-        <TextView
-            android:id="@+id/movie_directors"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            style="@style/MyTextViewStyle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/movieLogo"
-            app:layout_constraintTop_toBottomOf="@+id/movie_country" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/movieLogo"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:adjustViewBounds="false"
+                    android:cropToPadding="false"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/movie_name_rus"
+                    app:riv_border_color="#333333"
+                    app:riv_border_width="2dip"
+                    app:riv_corner_radius="5dip"
+                    app:riv_mutate_background="true"
+                    app:riv_oval="false"
+                    app:riv_tile_mode="clamp" />
+
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/movie_name_rus"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="124dp"
+                    android:fontFamily="sans-serif-black"
+                    android:maxLines="2"
+                    android:singleLine="false"
+                    android:text="@string/test_string"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    autofit:minTextSize="12sp" />
+
+                <TextView
+                    android:id="@+id/movie_name_eng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:maxLines="2"
+                    android:singleLine="false"
+                    android:text="@string/test_string"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.004"
+                    app:layout_constraintStart_toEndOf="@+id/movieLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/movie_name_rus" />
+
+                <TextView
+                    android:id="@+id/movie_genre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    style="@style/MyTextViewStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/movieLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/movie_name_eng" />
+
+                <TextView
+                    android:id="@+id/movie_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    style="@style/MyTextViewStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/movieLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/movie_genre" />
+
+                <TextView
+                    android:id="@+id/movie_directors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    style="@style/MyTextViewStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/movieLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/movie_country" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:id="@+id/movie_actors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/movieLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/movie_directors" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
         <TextView
-            style="@style/MyTextViewStyle"
-            android:id="@+id/movie_actors"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/movieLogo"
-            app:layout_constraintTop_toBottomOf="@+id/movie_directors" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+                android:id="@+id/movie_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="2dp"
+                android:padding="4dp"
+                android:text="@string/test_string"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:background="@drawable/date_bg"
+                android:textColor="@color/colorDateText"
+                android:elevation="1dp"
+                android:layout_alignParentEnd="true"
+        />
+</RelativeLayout>

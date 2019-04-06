@@ -8,7 +8,6 @@ import kotlinx.coroutines.*
 
 class MoviesViewModel : ViewModel() {
 
-  //  private var movies = mutableListOf<Movie>()
     private val api = ApiService().initApi()
 
     private val job = Job()
@@ -22,20 +21,6 @@ class MoviesViewModel : ViewModel() {
     private val month = getCurrentMonth()
     private val year = getCurrentYear()
 
- //   suspend fun getMovieData(){
- //       try{
- //           movies = api.getMovies(month,year).await()
- //       }
- //       catch(e : Exception){
- //           Log.d("Date","Exception - " + e.message)
- //       }
-//        Log.d("Date","Size - " + movies.size.toString())
-//    }
-//    fun getData() : MutableList<Movie>{
-     //   isLoading.value = false
-//        return movies.filter{ it.date.parseDate().toInt() >= day} as MutableList<Movie>
-//    }
-
     fun getMovieData() {
         uiScope.launch(handler) {
             //Working on UI thread
@@ -45,13 +30,10 @@ class MoviesViewModel : ViewModel() {
             val deferred = async(Dispatchers.IO) {
                 //Working on background thread
                 api.getMovies(month,year).await()
-                //10 + 10
             }
             //Working on UI thread
             movies.value = deferred.await().filter{ it.date.parseDate().toInt() >= day} as MutableList<Movie>
             isLoading.value = false
-
-            //Log.d("Date","doSomeOperation - " + movies2.value)
         }
     }
     override fun onCleared() {
@@ -59,9 +41,8 @@ class MoviesViewModel : ViewModel() {
         job.cancel()
     }
 
-    private val handler = CoroutineExceptionHandler { coroutineContext, throwable ->
+    private val handler = CoroutineExceptionHandler { _, throwable ->
         isLoading.value = false
         isError.value = throwable
-        //Log.d("Date", "Throwable : $throwable")
     }
 }
