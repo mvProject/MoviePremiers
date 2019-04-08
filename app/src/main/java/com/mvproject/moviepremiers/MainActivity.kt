@@ -1,5 +1,6 @@
 package com.mvproject.moviepremiers
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.mvproject.updater.Updater
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
+import android.net.ConnectivityManager
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,8 +26,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar)
+
         val upd = Updater(this)
-        upd.checkUpdateFromUrl(updateJson)
+        if (isNetworkConnected())
+            upd.checkUpdateFromUrl(updateJson)
 
         viewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
 
@@ -46,13 +52,12 @@ class MainActivity : AppCompatActivity() {
         viewModel.getMovieData()
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.d("Date","onResume")
-    }
-
     private fun showLoadingDialog(show: Boolean) {
         if (show) loadingView.start() else loadingView.stop()
     }
 
+    private fun isNetworkConnected(): Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return cm.activeNetworkInfo != null
+    }
 }

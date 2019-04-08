@@ -45,4 +45,6 @@ class MoviesViewModel : ViewModel() {
         isLoading.value = false
         isError.value = throwable
     }
+
+
 }
