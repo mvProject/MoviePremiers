@@ -1,10 +1,8 @@
 package com.mvproject.moviepremiers
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
-
 
 class MoviesViewModel : ViewModel() {
 
@@ -25,11 +23,10 @@ class MoviesViewModel : ViewModel() {
         uiScope.launch(handler) {
             //Working on UI thread
             isLoading.value = true
-            Log.d("Date","doSomeOperation - " + Thread.currentThread().name)
             //Use dispatcher to switch between context
             val deferred = async(Dispatchers.IO) {
                 //Working on background thread
-                api.getMovies(month,year).await()
+                api.getMoviesAsync(month,year).await()
             }
             //Working on UI thread
             movies.value = deferred.await().filter{ it.date.parseDate().toInt() >= day} as MutableList<Movie>

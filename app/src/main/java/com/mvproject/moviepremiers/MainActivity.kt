@@ -3,7 +3,6 @@ package com.mvproject.moviepremiers
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,8 +11,6 @@ import com.mvproject.updater.Updater
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import android.net.ConnectivityManager
-
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,8 +25,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val upd = Updater(this)
-        if (isNetworkConnected())
-            upd.checkUpdateFromUrl(updateJson)
+        upd.checkUpdateFromUrl(updateJson)
 
         viewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
 
@@ -46,10 +42,14 @@ class MainActivity : AppCompatActivity() {
                 if (it.size>0){
                     layoutManager = LinearLayoutManager(this@MainActivity)
                     adapter = MovieAdapter(it, this@MainActivity)}
-                else toast("До конца месяца больше нет премьер")
+                else toast(context.getString(R.string.no_premiers_anymore))
             } }
         })
-        viewModel.getMovieData()
+
+        if(isNetworkConnected())
+            viewModel.getMovieData()
+        //else
+        //    toast(getString(R.string.no_internet_connection))
     }
 
     private fun showLoadingDialog(show: Boolean) {

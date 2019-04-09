@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 interface MovieApi {
     @GET("movie/{month}/{year}")
-    fun getMovies(
+    fun getMoviesAsync(
         @Path("month") month : String,
         @Path("year") year : String
     ) : Deferred<MutableList<Movie>>

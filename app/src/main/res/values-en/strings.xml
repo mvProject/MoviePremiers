@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie premieres</string>
+    <string name="add_premiere">Movie premiere</string>
+    <string name="no_premiers_anymore">" Until the end of the month there are no more movie premieres"</string>
+    <string name="test_string">test_string</string>
+    <string name="no_internet_connection">No internet connection</string>
+</resources>

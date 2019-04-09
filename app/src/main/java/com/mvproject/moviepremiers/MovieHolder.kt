@@ -36,7 +36,7 @@ class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
         movieDate.setOnClickListener {
             val month = Calendar.getInstance().get(Calendar.MONTH)
             val year = Calendar.getInstance().get(Calendar.YEAR)
-            val eventText = "Премьера фильма - '${movie.titleRus}'"
+            val eventText = context.getString(R.string.no_premiers_anymore) + " - \"movie.titleRus\""
             startCalendar(context,eventText,year,month,movie.date.parseDate().toInt())
         }
     }
