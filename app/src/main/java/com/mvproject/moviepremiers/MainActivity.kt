@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
 
         if(isNetworkConnected())
             viewModel.getMovieData()
-        //else
-        //    toast(getString(R.string.no_internet_connection))
+        else
+            toast(getString(R.string.no_internet_connection))
     }
 
     private fun showLoadingDialog(show: Boolean) {
