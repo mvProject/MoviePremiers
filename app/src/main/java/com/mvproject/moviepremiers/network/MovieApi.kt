@@ -1,5 +1,6 @@
-package com.mvproject.moviepremiers
+package com.mvproject.moviepremiers.network
 
+import com.mvproject.moviepremiers.data.model.Movie
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -11,7 +12,5 @@ interface MovieApi {
         @Path("year") year : String
     ) : Deferred<MutableList<Movie>>
 
-    companion object {
-        val BASE_URL = "http://mvpapi.herokuapp.com/"
-    }
+
 }

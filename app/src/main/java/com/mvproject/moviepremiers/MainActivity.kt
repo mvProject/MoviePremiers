@@ -11,6 +11,9 @@ import com.mvproject.updater.Updater
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import android.net.ConnectivityManager
+import com.mvproject.moviepremiers.data.model.Movie
+import com.mvproject.moviepremiers.data.viewmodel.MoviesViewModel
+import com.mvproject.moviepremiers.ui.MovieAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,7 +44,8 @@ class MainActivity : AppCompatActivity() {
             it?.let {movieList.apply{
                 if (it.size>0){
                     layoutManager = LinearLayoutManager(this@MainActivity)
-                    adapter = MovieAdapter(it, this@MainActivity)}
+                    adapter = MovieAdapter(it, this@MainActivity)
+                }
                 else toast(context.getString(R.string.no_premiers_anymore))
             } }
         })

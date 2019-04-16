@@ -1,7 +1,13 @@
-package com.mvproject.moviepremiers
+package com.mvproject.moviepremiers.data.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mvproject.moviepremiers.data.model.Movie
+import com.mvproject.moviepremiers.network.ApiService
+import com.mvproject.moviepremiers.utils.getCurrentDay
+import com.mvproject.moviepremiers.utils.getCurrentMonth
+import com.mvproject.moviepremiers.utils.getCurrentYear
+import com.mvproject.moviepremiers.utils.parseDate
 import kotlinx.coroutines.*
 
 class MoviesViewModel : ViewModel() {

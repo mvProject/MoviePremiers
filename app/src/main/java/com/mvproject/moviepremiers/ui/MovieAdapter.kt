@@ -1,9 +1,11 @@
-package com.mvproject.moviepremiers
+package com.mvproject.moviepremiers.ui
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mvproject.moviepremiers.data.model.Movie
+import com.mvproject.moviepremiers.R
 
 class MovieAdapter(var movies: MutableList<Movie>, var context: Context) : RecyclerView.Adapter<MovieHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {

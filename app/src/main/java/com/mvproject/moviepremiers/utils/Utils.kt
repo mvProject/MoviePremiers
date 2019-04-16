@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers
+package com.mvproject.moviepremiers.utils
 
 import java.text.DecimalFormat
 import java.util.*

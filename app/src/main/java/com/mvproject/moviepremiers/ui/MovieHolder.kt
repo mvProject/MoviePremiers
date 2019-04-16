@@ -1,14 +1,15 @@
-package com.mvproject.moviepremiers
+package com.mvproject.moviepremiers.ui
 
 import android.content.Context
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.movie_item.view.*
-import androidx.core.content.ContextCompat.startActivity
-import android.content.Intent
 import java.util.*
-import android.provider.CalendarContract
+import com.mvproject.moviepremiers.data.model.Movie
+import com.mvproject.moviepremiers.R
+import com.mvproject.moviepremiers.utils.parseDate
+import com.mvproject.moviepremiers.utils.startCalendar
 import com.squareup.picasso.Picasso
 
 class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
@@ -20,7 +21,7 @@ class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
     private val movieDirectors = view?.findViewById(R.id.movie_directors) as TextView
     private val movieCountries = view?.findViewById(R.id.movie_country) as TextView
 
-    fun bindNote(movie: Movie,context: Context) {
+    fun bindNote(movie: Movie, context: Context) {
         movieName.text = movie.titleRus
         movieNameEng.text = movie.titleEng
         movieDate.text = movie.date
@@ -41,26 +42,5 @@ class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
         }
     }
 }
-fun String.parseDate() : String {
-    var str = this
-    try {
-        val date = str.split(" ")
-        str = date[0]
-    }
-    finally {
-        return str
-    }
-}
 
-fun startCalendar(context: Context,eventTitle : String,year : Int,month : Int, day : Int){
-    val cal = Calendar.getInstance()
-    cal.set(year,month,day)
-    val builder = CalendarContract.CONTENT_URI.buildUpon().build()
-    val intent = Intent(Intent.ACTION_INSERT,builder)
-    intent.data = CalendarContract.Events.CONTENT_URI
-    intent.putExtra(CalendarContract.Events.TITLE, eventTitle)
-    intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
-    intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, cal.timeInMillis)
 
-    startActivity(context,intent,null)
-}
