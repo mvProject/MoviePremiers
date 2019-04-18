@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             it?.let {movieList.apply{
                 if (it.size>0){
                     layoutManager = LinearLayoutManager(this@MainActivity)
-                    adapter = MovieAdapter(it, this@MainActivity)
+                    adapter = MovieAdapter(it)
                 }
                 else toast(context.getString(R.string.no_premiers_anymore))
             } }

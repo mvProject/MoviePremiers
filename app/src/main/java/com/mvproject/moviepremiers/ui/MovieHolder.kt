@@ -1,21 +1,12 @@
 package com.mvproject.moviepremiers.ui
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mvproject.moviepremiers.R
-import kotlinx.android.synthetic.main.movie_item.view.*
-import java.util.*
 import com.mvproject.moviepremiers.data.model.Movie
 import com.mvproject.moviepremiers.databinding.MovieItemBinding
-import com.mvproject.moviepremiers.utils.parseDate
-import com.mvproject.moviepremiers.utils.startCalendar
-import com.squareup.picasso.Picasso
-
 
 /*
 class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){

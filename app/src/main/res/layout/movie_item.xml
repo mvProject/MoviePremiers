@@ -47,7 +47,8 @@
                         app:riv_corner_radius="5dip"
                         app:riv_mutate_background="true"
                         app:riv_oval="false"
-                        app:riv_tile_mode="clamp" />
+                        app:riv_tile_mode="clamp"
+                        app:url="@{movie.image}"/>
 
                     <me.grantland.widget.AutofitTextView
                         android:id="@+id/movie_name_rus"
@@ -60,6 +61,7 @@
                         android:maxLines="2"
                         android:singleLine="false"
                         android:text="@{movie.titleRus}"
+                        tools:text="MovieTitleRus"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"
@@ -80,6 +82,7 @@
                         android:maxLines="2"
                         android:singleLine="false"
                         android:text="@{movie.titleEng}"
+                        tools:text="MovieTitleEng"
                         android:textSize="12sp"
                         android:textColor="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -94,6 +97,7 @@
                         android:layout_marginStart="112dp"
                         style="@style/MyTextViewStyle"
                         android:text="@{movie.genre}"
+                        tools:text="MovieGenre"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/movieLogo"
@@ -106,6 +110,7 @@
                         android:layout_marginStart="112dp"
                         style="@style/MyTextViewStyle"
                         android:text="@{movie.country}"
+                        tools:text="MovieCountry"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/movieLogo"
                         app:layout_constraintTop_toBottomOf="@+id/movie_genre" />
@@ -117,6 +122,7 @@
                         android:layout_marginStart="112dp"
                         style="@style/MyTextViewStyle"
                         android:text="@{movie.directors}"
+                        tools:text="MovieDirectors"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/movieLogo"
@@ -129,6 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="112dp"
                         android:text="@{movie.actors}"
+                        tools:text="MovieActors"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/movieLogo"
@@ -152,6 +159,7 @@
                 android:textColor="@color/colorDateText"
                 android:elevation="1dp"
                 android:layout_alignParentEnd="true"
+                tools:text="MovieDate"
         />
     </RelativeLayout>
 </layout>
