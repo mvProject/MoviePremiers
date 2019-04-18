@@ -1,5 +1,6 @@
 package com.mvproject.moviepremiers.data.viewmodel
 
+import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mvproject.moviepremiers.data.model.Movie
@@ -19,6 +20,7 @@ class MoviesViewModel : ViewModel() {
 
     var isLoading = MutableLiveData<Boolean>()
     var isError = MutableLiveData<Throwable>()
+
     var movies = MutableLiveData<MutableList<Movie>>()
 
     private val day = getCurrentDay()
@@ -45,7 +47,7 @@ class MoviesViewModel : ViewModel() {
     }
 
     private val handler = CoroutineExceptionHandler { _, throwable ->
-        isLoading.value = false
+      //  isLoading.value = false
         isError.value = throwable
     }
 

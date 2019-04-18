@@ -1,18 +1,26 @@
 package com.mvproject.moviepremiers.ui
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.mvproject.moviepremiers.R
 import kotlinx.android.synthetic.main.movie_item.view.*
 import java.util.*
 import com.mvproject.moviepremiers.data.model.Movie
-import com.mvproject.moviepremiers.R
+import com.mvproject.moviepremiers.databinding.MovieItemBinding
 import com.mvproject.moviepremiers.utils.parseDate
 import com.mvproject.moviepremiers.utils.startCalendar
 import com.squareup.picasso.Picasso
 
+
+/*
 class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
+
+
     private val movieName = view?.findViewById(R.id.movie_name_rus) as TextView
     private val movieNameEng = view?.findViewById(R.id.movie_name_eng) as TextView
     private val movieDate = view?.findViewById(R.id.movie_date) as TextView
@@ -21,7 +29,7 @@ class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
     private val movieDirectors = view?.findViewById(R.id.movie_directors) as TextView
     private val movieCountries = view?.findViewById(R.id.movie_country) as TextView
 
-    fun bindNote(movie: Movie, context: Context) {
+    fun bindItem(movie: Movie, context: Context) {
         movieName.text = movie.titleRus
         movieNameEng.text = movie.titleEng
         movieDate.text = movie.date
@@ -43,4 +51,18 @@ class MovieHolder(view: View?) : RecyclerView.ViewHolder(view!!){
     }
 }
 
+*/
+class MovieHolder(
+    private val parent: ViewGroup,
+    private val binding: MovieItemBinding = DataBindingUtil.inflate(
+        LayoutInflater.from(parent.context),
+        R.layout.movie_item,
+        parent,
+        false
+    )
+) : RecyclerView.ViewHolder(binding.root) {
 
+    fun bindItem(movie: Movie) {
+        binding.movie = movie
+    }
+}
