@@ -4,9 +4,16 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
+
         <variable name="movie"
                   type="com.mvproject.moviepremiers.data.model.Movie"/>
+
+        <variable
+                name="clickListener"
+                type="com.mvproject.moviepremiers.bindings.BindingHelper"/>
     </data>
+
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -160,6 +167,7 @@
                 android:elevation="1dp"
                 android:layout_alignParentEnd="true"
                 tools:text="MovieDate"
+                android:onClick="@{view -> clickListener.AddToCalendar(view,movie)}"
         />
     </RelativeLayout>
 </layout>

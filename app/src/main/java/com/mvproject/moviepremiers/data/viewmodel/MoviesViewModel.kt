@@ -1,6 +1,5 @@
 package com.mvproject.moviepremiers.data.viewmodel
 
-import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mvproject.moviepremiers.data.model.Movie

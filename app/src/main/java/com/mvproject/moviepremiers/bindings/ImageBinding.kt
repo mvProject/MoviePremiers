@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers
+package com.mvproject.moviepremiers.bindings
 
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
