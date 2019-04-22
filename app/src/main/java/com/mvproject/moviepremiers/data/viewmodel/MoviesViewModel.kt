@@ -46,7 +46,7 @@ class MoviesViewModel : ViewModel() {
     }
 
     private val handler = CoroutineExceptionHandler { _, throwable ->
-      //  isLoading.value = false
+        isLoading.value = false
         isError.value = throwable
     }
 

@@ -11,8 +11,10 @@ import com.mvproject.updater.Updater
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import android.net.ConnectivityManager
+import androidx.databinding.DataBindingUtil
 import com.mvproject.moviepremiers.data.model.Movie
 import com.mvproject.moviepremiers.data.viewmodel.MoviesViewModel
+import com.mvproject.moviepremiers.databinding.ActivityMainBinding
 import com.mvproject.moviepremiers.ui.MovieAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +25,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(
+            this, R.layout.activity_main)
+
+        binding.lifecycleOwner = this
+        //setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar)
 
@@ -33,9 +40,11 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
 
-        viewModel.isLoading.observe(this, Observer<Boolean> {
-            it?.let { showLoadingDialog(it) }
-        })
+        binding.viewmodel = viewModel
+
+    //    viewModel.isLoading.observe(this, Observer<Boolean> {
+    //        it?.let { showLoadingDialog(it) }
+    //    })
 
         viewModel.isError.observe(this, Observer<Throwable> {
             it?.let { Snackbar.make(movieList, it.message.toString(), Snackbar.LENGTH_LONG).show()}
