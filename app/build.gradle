@@ -20,8 +20,13 @@ android {
         versionCode 1
         versionName "1.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String","UPDATE_JSON_URL","\"https://raw.githubusercontent.com/mvProject/MoviePremiers/master/app/release/update.json\"")
+
     }
     buildTypes {
+
+
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
