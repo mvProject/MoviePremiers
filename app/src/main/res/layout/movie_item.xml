@@ -167,7 +167,7 @@
                 android:elevation="1dp"
                 android:layout_alignParentEnd="true"
                 tools:text="MovieDate"
-                android:onClick="@{view -> clickListener.AddToCalendar(view,movie)}"
+                android:onClick="@{view -> clickListener.addToCalendar(view,movie)}"
         />
     </RelativeLayout>
 </layout>

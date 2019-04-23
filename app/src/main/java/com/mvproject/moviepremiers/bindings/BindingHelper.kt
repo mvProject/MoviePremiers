@@ -8,7 +8,7 @@ import com.mvproject.moviepremiers.utils.startCalendar
 import java.util.*
 
 class BindingHelper{
-    
+
     fun addToCalendar(view : View, movie : Movie) {
         val month = Calendar.getInstance().get(Calendar.MONTH)
         val year = Calendar.getInstance().get(Calendar.YEAR)
