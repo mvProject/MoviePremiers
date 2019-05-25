@@ -16,6 +16,9 @@ import com.mvproject.moviepremiers.data.model.Movie
 import com.mvproject.moviepremiers.data.viewmodel.MoviesViewModel
 import com.mvproject.moviepremiers.databinding.ActivityMainBinding
 import com.mvproject.moviepremiers.ui.MovieAdapter
+import android.os.StrictMode
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,12 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.movies.observe(this, Observer<MutableList<Movie>> {
             it?.let {movieList.apply{
-                if (it.size>0){
-                    layoutManager = LinearLayoutManager(this@MainActivity)
-                    adapter = MovieAdapter(it)
-
-                }
-                else toast(context.getString(R.string.no_premiers_anymore))
+                layoutManager = LinearLayoutManager(this@MainActivity)
+                adapter = MovieAdapter(it)
             } }
         })
 

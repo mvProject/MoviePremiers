@@ -36,7 +36,12 @@ class MoviesViewModel : ViewModel() {
                 api.getMoviesAsync(month,year).await()
             }
             //Working on UI thread
-            movies.value = deferred.await().filter{ it.date.parseDate().toInt() >= day} as MutableList<Movie>
+            val result = deferred.await()
+            val filteredResult = result.filter{ it.date.parseDate().toInt() >= day} as MutableList<Movie>
+            when (filteredResult.size) {
+                0 -> movies.value = result
+                else -> movies.value = filteredResult
+            }
             isLoading.value = false
         }
     }
