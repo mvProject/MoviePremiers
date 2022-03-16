@@ -62,6 +62,12 @@ android {
     viewBinding {
         android.buildFeatures.viewBinding = true
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.1.1"
+    }
 }
 
 dependencies {
@@ -77,6 +83,19 @@ dependencies {
     implementation(Dependencies.autoFitTextView)
 
     implementationHilt()
+
+    // Integration with activities
+    implementation("androidx.activity:activity-compose:1.4.0")
+    // Compose Material Design
+    implementation("androidx.compose.material:material:1.1.1")
+    // Tooling support (Previews, etc.)
+    implementation("androidx.compose.ui:ui-tooling:1.1.1")
+    // Integration with ViewModels
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
+    // UI Tests
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
+
+    implementation("io.coil-kt:coil-compose:2.0.0-rc01")
 
     testImplementation(Dependencies.testLibraries)
     androidTestImplementation(Dependencies.androidTestLibraries)
