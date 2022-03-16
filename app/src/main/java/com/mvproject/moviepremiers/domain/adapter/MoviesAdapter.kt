@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.mvproject.moviepremiers.databinding.MovieItemBinding
+import com.mvproject.moviepremiers.component.MovieCard
+import com.mvproject.moviepremiers.databinding.MovieItemComposeBinding
 import com.mvproject.moviepremiers.domain.model.Movie
 import com.mvproject.moviepremiers.utils.OnClickListener
 
@@ -40,7 +40,7 @@ class MoviesAdapter(private val onClickListener: OnClickListener<Movie>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
-            MovieItemBinding.inflate(
+            MovieItemComposeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -51,25 +51,14 @@ class MoviesAdapter(private val onClickListener: OnClickListener<Movie>) :
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.binding.apply {
             val item = items[position]
-            movieActors.text = item.actors
-            movieCountry.text = item.country
-            movieDate.text = item.date
-            movieDirectors.text = item.directors
-            movieGenre.text = item.genre
-            //movieActors.text = item.link
-            movieNameEng.text = item.titleEng
-            movieNameRus.text = item.titleRus
-
-            movieLogo.load(item.image) {
-                //crossfade(true)
-            }
-
-            movieDate.setOnClickListener {
-                onClickListener.onItemClick(item)
+            movieCard.setContent {
+                MovieCard(movieItem = item){
+                    onClickListener.onItemClick(item)
+                }
             }
         }
     }
 
-    inner class ItemViewHolder(val binding: MovieItemBinding) :
+    inner class ItemViewHolder(val binding: MovieItemComposeBinding) :
         RecyclerView.ViewHolder(binding.root)
 }
