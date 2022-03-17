@@ -1,68 +1,61 @@
 package com.mvproject.moviepremiers.ui
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.mvproject.moviepremiers.domain.model.Movie
-import com.mvproject.moviepremiers.domain.adapter.MoviesAdapter
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.mvproject.moviepremiers.R
-import com.mvproject.moviepremiers.databinding.ActivityMainBinding
-import com.mvproject.moviepremiers.utils.OnClickListener
-import com.mvproject.moviepremiers.utils.collectFlow
+import com.mvproject.moviepremiers.ui.component.MovieCard
 import com.mvproject.moviepremiers.utils.parseDate
 import com.mvproject.moviepremiers.utils.startCalendar
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
 
-    private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel by viewModels()
-
-    private lateinit var moviesAdapter: MoviesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContent {
+            MainScreen(mainViewModel)
+        }
+    }
+}
 
-        with(binding) {
-            val itemClick = OnClickListener<Movie> { movie ->
-                val month = Calendar.getInstance().get(Calendar.MONTH)
-                val year = Calendar.getInstance().get(Calendar.YEAR)
-                val eventText =
-                    getString(R.string.add_premiere) + " - \"" + movie.titleRus + "\""
+@Composable
+fun MainScreen(
+    mainViewModel: MainViewModel
+) {
+    val state = mainViewModel.movies.collectAsState(initial = emptyList())
+    val context = LocalContext.current
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxHeight()
+            .padding(8.dp)
+    ) {
+        items(state.value) { movieItem ->
+            val eventText =
+                stringResource(id = R.string.add_premiere) + " - \"" + movieItem.titleRus + "\""
+            MovieCard(movieItem = movieItem) {
                 startCalendar(
-                    this@MainActivity,
+                    context,
                     eventText,
-                    year,
-                    month,
-                    movie.date.parseDate().toInt()
+                    movieItem.date.parseDate().toInt()
                 )
             }
-
-            moviesAdapter = MoviesAdapter(itemClick)
-
-            movieList.apply {
-                layoutManager = LinearLayoutManager(this@MainActivity)
-                adapter = moviesAdapter
-            }
         }
-
-        collectFlow(mainViewModel.errorState) { error ->
-            // showErrorMessage(getString(error))
-        }
-
-        collectFlow(mainViewModel.loadState) {
-            // progressBar.isVisible = it
-        }
-
-        collectFlow(mainViewModel.movies) { movies ->
-            moviesAdapter.items = movies
-        }
-
-        mainViewModel.loadMovies()
     }
+
+    mainViewModel.loadMovies()
 }
