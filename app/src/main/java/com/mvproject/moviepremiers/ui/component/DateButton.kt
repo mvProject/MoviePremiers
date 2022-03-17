@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.component
+package com.mvproject.moviepremiers.ui.component
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.component
+package com.mvproject.moviepremiers.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

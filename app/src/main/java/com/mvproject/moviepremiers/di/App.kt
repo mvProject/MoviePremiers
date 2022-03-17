@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers
+package com.mvproject.moviepremiers.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
