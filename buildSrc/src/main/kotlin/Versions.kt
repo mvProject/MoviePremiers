@@ -1,18 +1,15 @@
 object Versions {
     // app level
     const val gradle = "7.0.3"
-    const val kotlin = "1.5.30"
+    const val kotlin = "1.6.10"
     const val ktLint = "10.2.1"
     const val depUpdate = "0.40.0"
     // libs
     const val coreKtx = "1.7.0"
     const val appcompat = "1.4.1"
-    const val constraintLayout = "2.1.3"
     const val material = "1.4.0"
-    const val activityKtx = "1.4.0"
     const val timber = "5.0.1"
     const val annotation = "1.2.0"
-    const val fragmentKtx = "1.4.0"
 
     // lifecycle
     const val lifecycle = "2.4.0"
@@ -26,21 +23,19 @@ object Versions {
     const val extJunit = "1.1.3"
     const val espresso = "3.4.0"
 
-    // RecyclerView
-    const val recyclerView = "1.2.1"
-
     // retrofit
     const val retrofit = "2.9.0"
     const val loggingInterceptor = "5.0.0-alpha.2"
     const val gson = "2.9.0"
     const val gsonConverter = "2.9.0"
 
+    // Compose
+    const val compose = "1.1.1"
+    const val viewModelCompose = "2.4.1"
+    const val activityCompose = "1.4.0"
+
     const val coil = "1.4.0"
-
-    const val roundedImage = "2.3.0"
-    const val autoFitText = "0.2.1"
-
-    const val room = "2.4.1"
+    const val coilCompose = "2.0.0-rc01"
     // di
     const val daggerHilt = "2.41"
 }

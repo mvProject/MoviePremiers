@@ -5,12 +5,8 @@ object Dependencies {
     // android ui
     private const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     private const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
-    private const val constraintLayout =
-        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-    private const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtx}"
     private const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     private const val material = "com.google.android.material:material:${Versions.material}"
-    private const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
 
     // test libs
     private const val junit = "junit:junit:${Versions.junit}"
@@ -24,10 +20,6 @@ object Dependencies {
     private const val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     private const val gson = "com.google.code.gson:gson:${Versions.gson}"
-
-
-    private const val roundedImage = "com.makeramen:roundedimageview:${Versions.roundedImage}"
-    private const val autoFitText = "me.grantland:autofittextview:${Versions.autoFitText}"
 
     // annotation
     private const val annotationX = "androidx.annotation:annotation:${Versions.annotation}"
@@ -48,35 +40,31 @@ object Dependencies {
     const val hilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
 
-    // Room
-    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
-    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
-    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-
-    private const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
-
     private const val coilKt = "io.coil-kt:coil:${Versions.coil}"
+
+    // Compose
+    private const val coilKtCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
+    private const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.viewModelCompose}"
+    private const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
+    private const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
+    private const val composeTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+
+    private const val composeJunit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(coreKtx)
         add(appcompat)
-        add(constraintLayout)
-        add(activityKtx)
         add(material)
-        add(fragmentKtx)
-        add(recyclerview)
+    }
+
+    val appComposeLibraries = arrayListOf<String>().apply {
+        add(activityCompose)
+        add(composeMaterial)
+        add(composeTooling)
     }
 
     val logging = arrayListOf<String>().apply {
         add(timber)
-    }
-
-    val roundedImageView = arrayListOf<String>().apply {
-        add(roundedImage)
-    }
-
-    val autoFitTextView = arrayListOf<String>().apply {
-        add(autoFitText)
     }
 
     val annotation = arrayListOf<String>().apply {
@@ -85,11 +73,16 @@ object Dependencies {
 
     val coil = arrayListOf<String>().apply {
         add(coilKt)
+        add(coilKtCompose)
     }
 
     val lifecycleKtx = arrayListOf<String>().apply {
         add(lifecycleLiveDataKtx)
         add(lifecycleViewModelKtx)
+    }
+
+    val lifecycleCompose = arrayListOf<String>().apply {
+        add(viewModelCompose)
     }
 
     val coroutines = arrayListOf<String>().apply {
@@ -112,6 +105,10 @@ object Dependencies {
     val testLibraries = arrayListOf<String>().apply {
         add(junit)
     }
+
+    val testComposeLibraries = arrayListOf<String>().apply {
+        add(composeJunit)
+    }
 }
 
 fun DependencyHandler.implementationHilt() {
@@ -119,8 +116,3 @@ fun DependencyHandler.implementationHilt() {
     kapt(Dependencies.hiltCompiler)
 }
 
-fun DependencyHandler.implementationRoom() {
-    implementation(Dependencies.roomRuntime)
-    implementation(Dependencies.roomKtx)
-    kapt(Dependencies.roomCompiler)
-}
