@@ -8,42 +8,48 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.mvproject.moviepremiers.domain.model.Movie
+import com.mvproject.moviepremiers.ui.theme.appTypography
+import com.mvproject.moviepremiers.ui.theme.dimens
 
 @Composable
 fun MovieInfo(movieItem: Movie, modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier.padding(8.dp)
+        modifier = modifier.padding(MaterialTheme.dimens.size8)
     ) {
         Text(
             text = movieItem.titleEng,
-            style = MaterialTheme.typography.caption
+            style = MaterialTheme.appTypography.textSemiBold
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size2))
         Text(
             text = movieItem.titleRus,
-            style = MaterialTheme.typography.h6
+            style = MaterialTheme.appTypography.textBold,
+            fontSize = 16.sp
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size2))
         Text(
             text = movieItem.country,
-            style = MaterialTheme.typography.caption
+            style = MaterialTheme.appTypography.textMedium,
+            fontSize = 14.sp
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size2))
         Text(
             text = movieItem.genre,
-            style = MaterialTheme.typography.caption
+            style = MaterialTheme.appTypography.textNormal
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size2))
         Text(
             text = movieItem.directors,
-            style = MaterialTheme.typography.caption
+            style = MaterialTheme.appTypography.textNormal,
+            fontSize = 10.sp
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(MaterialTheme.dimens.size2))
         Text(
             text = movieItem.actors,
-            style = MaterialTheme.typography.caption
+            style = MaterialTheme.appTypography.textNormal,
+            fontSize = 10.sp
         )
     }
 }

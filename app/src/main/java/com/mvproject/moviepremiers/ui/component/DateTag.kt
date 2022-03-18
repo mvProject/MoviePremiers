@@ -10,29 +10,28 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.mvproject.moviepremiers.R
+import com.mvproject.moviepremiers.ui.theme.dimens
 
 @Composable
 fun DateTag(date: String, modifier: Modifier = Modifier, onDateClick:()->Unit) {
     Box(
         modifier = modifier
             .border(
-                width = 1.dp,
-                color = colorResource(id = R.color.colorDateBorder),
+                width = MaterialTheme.dimens.size2,
+                color = MaterialTheme.colors.onSurface,
                 shape = RoundedCornerShape(80.dp)
             )
-            .background(color = colorResource(id = R.color.colorDateText))
-            .padding(10.dp)
+            .background(color = MaterialTheme.colors.surface)
+            .padding(MaterialTheme.dimens.size8)
             .clickable { onDateClick() }
 
     ) {
         Text(
             text = date,
-            color = colorResource(id = R.color.colorDateBack),
+            color = MaterialTheme.colors.onSurface,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.caption,
         )

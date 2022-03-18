@@ -1,27 +1,24 @@
 package com.mvproject.moviepremiers.ui.component
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonColors
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mvproject.moviepremiers.R
+import com.mvproject.moviepremiers.ui.theme.MoviePremierTheme
+import com.mvproject.moviepremiers.ui.theme.dimens
 
 @Composable
 fun DateButton(
     modifier: Modifier = Modifier,
     text: String,
-    textColor: Color = colorResource(id = R.color.colorDateText),
+    textColor: Color = MaterialTheme.colors.onSurface,
     buttonBackgroundColor: ButtonColors = ButtonDefaults.buttonColors(
-        backgroundColor = colorResource(id = R.color.colorDateBack)
+        backgroundColor = MaterialTheme.colors.secondary
     ),
     fontSize: Int = 14,
     onClick: () -> Unit,
@@ -36,13 +33,23 @@ fun DateButton(
             text = text,
             color = textColor,
             fontSize = fontSize.sp,
-            modifier = Modifier.padding(2.dp)
+            modifier = Modifier.padding(MaterialTheme.dimens.size2)
         )
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-@Preview
-fun DateButtonShow(){
-    DateButton(text = "22.25.2021", onClick = {})
+fun DateButtonShowPreview() {
+    MoviePremierTheme {
+        DateButton(text = "22.25.2021", onClick = {})
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+@Composable
+fun DateButtonShowPreviewDark() {
+    MoviePremierTheme {
+        DateButton(text = "22.25.2021", onClick = {})
+    }
 }

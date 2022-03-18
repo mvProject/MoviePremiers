@@ -1,33 +1,38 @@
 package com.mvproject.moviepremiers.ui.component
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.mvproject.moviepremiers.R
 import com.mvproject.moviepremiers.domain.model.Movie
+import com.mvproject.moviepremiers.ui.theme.MoviePremierTheme
+import com.mvproject.moviepremiers.ui.theme.dimens
 
 @Composable
-fun MovieCard(movieItem: Movie, onClickListener:() -> Unit) {
+fun MovieCard(movieItem: Movie, onClickListener: () -> Unit) {
     Card(
-        shape = RoundedCornerShape(16.dp),
+        shape = MaterialTheme.shapes.large,
         modifier = Modifier
-            .padding(top = 8.dp, start = 8.dp, end = 8.dp, bottom = 8.dp),
-        backgroundColor = Color.LightGray,
-        border = BorderStroke(1.dp, colorResource(id = R.color.colorDateBorder)),
-        elevation = 12.dp
+            .padding(MaterialTheme.dimens.size8),
+        backgroundColor = MaterialTheme.colors.background,
+        border = BorderStroke(
+            MaterialTheme.dimens.size2,
+            MaterialTheme.colors.primary
+        ),
+        elevation = MaterialTheme.dimens.size8
     ) {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(
+                    horizontal = MaterialTheme.dimens.size16,
+                    vertical = MaterialTheme.dimens.size8
+                )
         ) {
             MovieLogo(
                 movieItem = movieItem,
@@ -35,16 +40,26 @@ fun MovieCard(movieItem: Movie, onClickListener:() -> Unit) {
                     .align(Alignment.CenterVertically),
                 onClick = onClickListener
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(MaterialTheme.dimens.size8))
             MovieInfo(movieItem = movieItem)
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun MovieCardPreview() {
-    MovieCard(testMovie, onClickListener = {})
+    MoviePremierTheme {
+        MovieCard(testMovie, onClickListener = {})
+    }
+}
+
+@Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true)
+@Composable
+fun MovieCardPreviewDark() {
+    MoviePremierTheme {
+        MovieCard(testMovie, onClickListener = {})
+    }
 }
 
 val testMovie = Movie(

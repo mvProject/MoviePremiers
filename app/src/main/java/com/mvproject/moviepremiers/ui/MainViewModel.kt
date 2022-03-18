@@ -34,7 +34,10 @@ class MainViewModel @Inject constructor(
     private val _errorState = MutableSharedFlow<Int>()
     val errorState = _errorState.asSharedFlow()
 
-    fun loadMovies() {
+    init {
+        loadMovies()
+    }
+    private fun loadMovies() {
         viewModelScope.launch {
             _loadState.value = true
             withContext(Dispatchers.IO) {
