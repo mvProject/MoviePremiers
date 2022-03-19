@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.domain.model
+package com.mvproject.moviepremiers.data.model
 
 data class Movie(var date : String,
                  var titleRus : String,

@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.ui.component
+package com.mvproject.moviepremiers.component
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.padding
@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.mvproject.moviepremiers.ui.theme.MoviePremierTheme
-import com.mvproject.moviepremiers.ui.theme.dimens
+import com.mvproject.moviepremiers.theme.MoviePremierTheme
+import com.mvproject.moviepremiers.theme.dimens
 
 @Composable
 fun DateButton(

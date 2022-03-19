@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.ui.component
+package com.mvproject.moviepremiers.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,9 +9,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
-import com.mvproject.moviepremiers.domain.model.Movie
-import com.mvproject.moviepremiers.ui.theme.appTypography
-import com.mvproject.moviepremiers.ui.theme.dimens
+import com.mvproject.moviepremiers.data.model.Movie
+import com.mvproject.moviepremiers.theme.appTypography
+import com.mvproject.moviepremiers.theme.dimens
 
 @Composable
 fun MovieInfo(movieItem: Movie, modifier: Modifier = Modifier) {

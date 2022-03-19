@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.ui.component
+package com.mvproject.moviepremiers.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -13,8 +13,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.mvproject.moviepremiers.domain.model.Movie
-import com.mvproject.moviepremiers.ui.theme.dimens
+import com.mvproject.moviepremiers.data.model.Movie
+import com.mvproject.moviepremiers.theme.dimens
 
 @Composable
 fun MovieLogo(movieItem: Movie, modifier: Modifier = Modifier, onClick:() -> Unit) {

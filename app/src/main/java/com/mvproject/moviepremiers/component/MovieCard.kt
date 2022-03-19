@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.ui.component
+package com.mvproject.moviepremiers.component
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.BorderStroke
@@ -9,9 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mvproject.moviepremiers.domain.model.Movie
-import com.mvproject.moviepremiers.ui.theme.MoviePremierTheme
-import com.mvproject.moviepremiers.ui.theme.dimens
+import com.mvproject.moviepremiers.data.model.Movie
+import com.mvproject.moviepremiers.theme.MoviePremierTheme
+import com.mvproject.moviepremiers.theme.dimens
 
 @Composable
 fun MovieCard(movieItem: Movie, onClickListener: () -> Unit) {

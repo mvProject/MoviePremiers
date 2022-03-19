@@ -1,6 +1,6 @@
 package com.mvproject.moviepremiers.network
 
-import com.mvproject.moviepremiers.domain.model.Movie
+import com.mvproject.moviepremiers.data.model.Movie
 import retrofit2.http.GET
 import retrofit2.http.Path
 

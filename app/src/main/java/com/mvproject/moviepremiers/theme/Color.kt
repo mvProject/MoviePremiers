@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.ui.theme
+package com.mvproject.moviepremiers.theme
 
 import androidx.compose.ui.graphics.Color
 

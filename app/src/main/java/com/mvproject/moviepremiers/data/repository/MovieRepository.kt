@@ -1,4 +1,4 @@
-package com.mvproject.moviepremiers.domain.repository
+package com.mvproject.moviepremiers.data.repository
 
 import com.mvproject.moviepremiers.network.MovieApi
 import javax.inject.Inject
